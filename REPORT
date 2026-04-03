@@ -1,5 +1,9 @@
-Detailed analysis of current Wi-Fi and Bluetooth network security. 
+### **Executive Summary: Wireless Network Security Architecture and Hardening**
 
-Identified vulnerabilities and potential risks. 
+This report details the design, implementation, and validation of a comprehensive, defense-in-depth wireless security architecture tailored specifically for high-stakes financial environments. The primary objective of this initiative was to transition the organization’s wireless infrastructure from vulnerable legacy protocols to a robust, Zero Trust model capable of mitigating modern interception, rogue access, and lateral movement threats.
 
-Encryption Strategy Document
+At the core of this hardened architecture is the deprecation of shared-key authentication (PSK) in favor of the **WPA3-Enterprise** standard. By integrating a **FreeRADIUS** backend utilizing **EAP-TLS** certificate-based authentication, the network now enforces strict, identity-driven access control. To guarantee absolute data confidentiality across untrusted physical mediums, an **OpenVPN** overlay utilizing **AES-256-GCM** encryption was deployed, ensuring all sensitive financial transmissions are encapsulated within high-entropy cryptographic tunnels.
+
+Furthermore, the framework addresses internal threat containment through rigorous network segmentation. Utilizing **VLAN-based isolation** and strict **iptables Access Control Lists (ACLs)**, the architecture successfully segregates core financial systems from low-trust zones, such as Guest networks. This structural resilience was successfully validated through simulated penetration testing, confirming the containment of a potential breach's "blast radius."
+
+To elevate the organizational security posture from a reactive state to a proactive one, persistent monitoring was established using **Suricata IDS/IPS** for wireless traffic and **`btmon`** for Bluetooth HCI protocol analysis. This enables the real-time detection and disruption of reconnaissance activities. Ultimately, all implemented technical controls strictly align with **GDPR, PCI-DSS, and ISO/IEC 27001** mandates, providing a scalable framework that secures data integrity and ensures operational resilience.
